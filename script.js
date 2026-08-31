@@ -27,7 +27,7 @@
 
     if (options.directDownload) {
       link.setAttribute("download", "");
-      link.setAttribute("aria-label", "РЎРєР°С‡Р°С‚СЊ Р°РєС‚СѓР°Р»СЊРЅС‹Р№ APK Vector");
+      link.setAttribute("aria-label", "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 APK Vector");
     } else {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
@@ -65,9 +65,9 @@
   const pluralizeDownloads = (count) => {
     const mod10 = count % 10;
     const mod100 = count % 100;
-    if (mod10 === 1 && mod100 !== 11) return "Р·Р°РіСЂСѓР·РєР° APK";
-    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "Р·Р°РіСЂСѓР·РєРё APK";
-    return "Р·Р°РіСЂСѓР·РѕРє APK";
+    if (mod10 === 1 && mod100 !== 11) return "\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430 APK";
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438 APK";
+    return "\u0437\u0430\u0433\u0440\u0443\u0437\u043e\u043a APK";
   };
 
   const setApkReady = (url) => {
@@ -76,8 +76,8 @@
     apkLink.classList.add("is-ready");
     apkLink.removeAttribute("aria-disabled");
     apkLink.removeAttribute("tabindex");
-    apkLink.setAttribute("aria-label", "РЎРєР°С‡Р°С‚СЊ Р°РєС‚СѓР°Р»СЊРЅС‹Р№ APK Vector СЃ GitHub Releases");
-    if (apkButtonLabel) apkButtonLabel.textContent = "РЎРєР°С‡Р°С‚СЊ APK";
+    apkLink.setAttribute("aria-label", "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 APK Vector \u0441 GitHub Releases");
+    if (apkButtonLabel) apkButtonLabel.textContent = "\u0421\u043a\u0430\u0447\u0430\u0442\u044c APK";
   };
 
   const setApkUnavailable = (message) => {
@@ -86,13 +86,13 @@
       apkLink.setAttribute("aria-disabled", "true");
       apkLink.setAttribute("tabindex", "-1");
     }
-    if (apkButtonLabel) apkButtonLabel.textContent = "APK РїРѕРєР° РЅРµРґРѕСЃС‚СѓРїРµРЅ";
+    if (apkButtonLabel) apkButtonLabel.textContent = "APK \u043f\u043e\u043a\u0430 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d";
     if (countNote) countNote.textContent = message;
   };
 
   const loadLatestRelease = async () => {
     if (!repositoryIsValid || !assetIsValid) {
-      setApkUnavailable("РџРѕСЃР»Рµ РїСѓР±Р»РёРєР°С†РёРё РЅР° GitHub Pages Р·Р°РіСЂСѓР·РєР° РїРѕРґРєР»СЋС‡РёС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё.");
+      setApkUnavailable("\u041f\u043e\u0441\u043b\u0435 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438 \u043d\u0430 GitHub Pages \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.");
       return;
     }
 
@@ -117,18 +117,18 @@
         ? release.assets.find((item) => item && item.name === assetName)
         : null;
       if (!asset || !isSafeUrl(asset.browser_download_url)) {
-        throw new Error("APK РЅРµ РЅР°Р№РґРµРЅ РІ РїРѕСЃР»РµРґРЅРµРј Release");
+        throw new Error("APK \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u043c Release");
       }
 
       setApkReady(asset.browser_download_url);
       const downloads = Number.isFinite(asset.download_count) ? asset.download_count : 0;
       if (countValue) countValue.textContent = new Intl.NumberFormat("ru-RU").format(downloads);
       if (countLabel) countLabel.textContent = pluralizeDownloads(downloads);
-      if (countNote) countNote.textContent = "Р¤Р°РєС‚РёС‡РµСЃРєРѕРµ С‡РёСЃР»Рѕ СЃРєР°С‡РёРІР°РЅРёР№ С„Р°Р№Р»Р° РёР· GitHub Releases.";
+      if (countNote) countNote.textContent = "\u0424\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0439 \u0444\u0430\u0439\u043b\u0430 \u0438\u0437 GitHub Releases.";
       if (apkSourceLabel && release.name) apkSourceLabel.textContent = String(release.name).slice(0, 48);
     } catch (error) {
-      if (countNote) countNote.textContent = "РЎС‡С‘С‚С‡РёРє РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРµРЅ. РЎРєР°С‡РёРІР°РЅРёРµ РїСЂРѕРґРѕР»Р¶Р°РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· GitHub Releases.";
-      console.warn("Vector: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕР±РЅРѕРІРёС‚СЊ СЃС‡С‘С‚С‡РёРє Р·Р°РіСЂСѓР·РѕРє.", error);
+      if (countNote) countNote.textContent = "\u0421\u0447\u0451\u0442\u0447\u0438\u043a \u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d. \u0421\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 GitHub Releases.";
+      console.warn("Vector: \u043d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0447\u0451\u0442\u0447\u0438\u043a \u0437\u0430\u0433\u0440\u0443\u0437\u043e\u043a.", error);
     }
   };
 
@@ -150,6 +150,10 @@
   window.addEventListener("pageshow", (event) => {
     if (event.persisted) refreshReleaseData();
   }, { passive: true });
+  window.addEventListener("focus", refreshReleaseData, { passive: true });
+  window.setInterval(() => {
+    if (!document.hidden) refreshReleaseData();
+  }, 60000);
 
   const preventContentTransfer = (event) => event.preventDefault();
   for (const eventName of ["copy", "cut", "selectstart", "dragstart"]) {
