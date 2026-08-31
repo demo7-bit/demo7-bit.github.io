@@ -27,7 +27,7 @@
 
     if (options.directDownload) {
       link.setAttribute("download", "");
-      link.setAttribute("aria-label", "Скачать актуальный APK Vector");
+      link.setAttribute("aria-label", "РЎРєР°С‡Р°С‚СЊ Р°РєС‚СѓР°Р»СЊРЅС‹Р№ APK Vector");
     } else {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
@@ -60,13 +60,14 @@
   const repositoryIsValid = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository);
   const assetIsValid = /^[A-Za-z0-9_.-]+\.apk$/i.test(assetName);
   const releaseTagIsValid = /^[A-Za-z0-9._-]+$/.test(releaseTag);
+  let lastReleaseCheck = 0;
 
   const pluralizeDownloads = (count) => {
     const mod10 = count % 10;
     const mod100 = count % 100;
-    if (mod10 === 1 && mod100 !== 11) return "загрузка APK";
-    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "загрузки APK";
-    return "загрузок APK";
+    if (mod10 === 1 && mod100 !== 11) return "Р·Р°РіСЂСѓР·РєР° APK";
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "Р·Р°РіСЂСѓР·РєРё APK";
+    return "Р·Р°РіСЂСѓР·РѕРє APK";
   };
 
   const setApkReady = (url) => {
@@ -75,8 +76,8 @@
     apkLink.classList.add("is-ready");
     apkLink.removeAttribute("aria-disabled");
     apkLink.removeAttribute("tabindex");
-    apkLink.setAttribute("aria-label", "Скачать актуальный APK Vector с GitHub Releases");
-    if (apkButtonLabel) apkButtonLabel.textContent = "Скачать APK";
+    apkLink.setAttribute("aria-label", "РЎРєР°С‡Р°С‚СЊ Р°РєС‚СѓР°Р»СЊРЅС‹Р№ APK Vector СЃ GitHub Releases");
+    if (apkButtonLabel) apkButtonLabel.textContent = "РЎРєР°С‡Р°С‚СЊ APK";
   };
 
   const setApkUnavailable = (message) => {
@@ -85,13 +86,13 @@
       apkLink.setAttribute("aria-disabled", "true");
       apkLink.setAttribute("tabindex", "-1");
     }
-    if (apkButtonLabel) apkButtonLabel.textContent = "APK пока недоступен";
+    if (apkButtonLabel) apkButtonLabel.textContent = "APK РїРѕРєР° РЅРµРґРѕСЃС‚СѓРїРµРЅ";
     if (countNote) countNote.textContent = message;
   };
 
   const loadLatestRelease = async () => {
     if (!repositoryIsValid || !assetIsValid) {
-      setApkUnavailable("После публикации на GitHub Pages загрузка подключится автоматически.");
+      setApkUnavailable("РџРѕСЃР»Рµ РїСѓР±Р»РёРєР°С†РёРё РЅР° GitHub Pages Р·Р°РіСЂСѓР·РєР° РїРѕРґРєР»СЋС‡РёС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё.");
       return;
     }
 
@@ -101,7 +102,9 @@
     setApkReady(directUrl);
 
     try {
-      const response = await fetch(`https://api.github.com/repos/${repository}/releases/${apiPath}`, {
+      const apiUrl = `https://api.github.com/repos/${repository}/releases/${apiPath}?refresh=${Date.now()}`;
+      const response = await fetch(apiUrl, {
+        cache: "no-store",
         headers: {
           Accept: "application/vnd.github+json",
           "X-GitHub-Api-Version": "2022-11-28",
@@ -114,22 +117,39 @@
         ? release.assets.find((item) => item && item.name === assetName)
         : null;
       if (!asset || !isSafeUrl(asset.browser_download_url)) {
-        throw new Error("APK не найден в последнем Release");
+        throw new Error("APK РЅРµ РЅР°Р№РґРµРЅ РІ РїРѕСЃР»РµРґРЅРµРј Release");
       }
 
       setApkReady(asset.browser_download_url);
       const downloads = Number.isFinite(asset.download_count) ? asset.download_count : 0;
       if (countValue) countValue.textContent = new Intl.NumberFormat("ru-RU").format(downloads);
       if (countLabel) countLabel.textContent = pluralizeDownloads(downloads);
-      if (countNote) countNote.textContent = "Фактическое число скачиваний файла из GitHub Releases.";
+      if (countNote) countNote.textContent = "Р¤Р°РєС‚РёС‡РµСЃРєРѕРµ С‡РёСЃР»Рѕ СЃРєР°С‡РёРІР°РЅРёР№ С„Р°Р№Р»Р° РёР· GitHub Releases.";
       if (apkSourceLabel && release.name) apkSourceLabel.textContent = String(release.name).slice(0, 48);
     } catch (error) {
-      if (countNote) countNote.textContent = "Счётчик временно недоступен. Скачивание продолжает работать через GitHub Releases.";
-      console.warn("Vector: не удалось обновить счётчик загрузок.", error);
+      if (countNote) countNote.textContent = "РЎС‡С‘С‚С‡РёРє РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРµРЅ. РЎРєР°С‡РёРІР°РЅРёРµ РїСЂРѕРґРѕР»Р¶Р°РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· GitHub Releases.";
+      console.warn("Vector: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕР±РЅРѕРІРёС‚СЊ СЃС‡С‘С‚С‡РёРє Р·Р°РіСЂСѓР·РѕРє.", error);
     }
   };
 
-  loadLatestRelease();
+  const refreshReleaseData = () => {
+    const now = Date.now();
+    if (now - lastReleaseCheck < 3000) return;
+    lastReleaseCheck = now;
+    loadLatestRelease();
+  };
+
+  refreshReleaseData();
+  apkLink?.addEventListener("click", () => {
+    window.setTimeout(refreshReleaseData, 8000);
+    window.setTimeout(refreshReleaseData, 25000);
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) refreshReleaseData();
+  }, { passive: true });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) refreshReleaseData();
+  }, { passive: true });
 
   const preventContentTransfer = (event) => event.preventDefault();
   for (const eventName of ["copy", "cut", "selectstart", "dragstart"]) {
