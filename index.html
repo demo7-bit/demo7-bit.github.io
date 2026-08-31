@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070707" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src https://api.github.com; img-src 'self' data:; media-src 'none'; style-src 'self'; script-src 'self'; font-src 'self'; worker-src 'none'" />
+    <title>Vector — простой и современный мессенджер</title>
+    <meta name="description" content="Vector — сторонний Android-клиент Telegram. Открытая бета-версия уже доступна для скачивания." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Vector" />
+    <meta property="og:title" content="Vector — простой и современный мессенджер" />
+    <meta property="og:description" content="Удобное общение, знакомый интерфейс и внимание к безопасности." />
+    <meta property="og:image" content="assets/vector-logo-512.png" />
+    <meta property="og:image:alt" content="Логотип Vector" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <div class="ambient ambient--one" aria-hidden="true"></div>
+    <div class="ambient ambient--two" aria-hidden="true"></div>
+    <canvas id="interactive-background" class="fx-canvas" aria-hidden="true"></canvas>
+    <img class="space-satellite space-satellite--one" src="assets/satellite.svg" width="68" height="68" alt="" aria-hidden="true" draggable="false" />
+    <img class="space-satellite space-satellite--two" src="assets/satellite.svg" width="54" height="54" alt="" aria-hidden="true" draggable="false" />
+    <img class="space-satellite space-satellite--three" src="assets/satellite.svg" width="76" height="76" alt="" aria-hidden="true" draggable="false" />
+
+    <main id="content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">Простой и&nbsp;<span>современный</span> мессенджер.</h1>
+            <p class="hero-lead">Знакомый Telegram с&nbsp;быстрым управлением приватностью, защищёнными чатами и&nbsp;более спокойным списком диалогов.</p>
+            <div class="hero-features" aria-label="Главные возможности Vector">
+              <span>Режим невидимки</span>
+              <span>Безопасный режим</span>
+              <span>Чаты под паролем</span>
+              <span>Однострочный список</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button button--primary" href="#download">
+                Скачать Vector
+                <svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 17h12" /></svg>
+              </a>
+              <a class="button button--quiet" href="#about">О приложении</a>
+            </div>
+            <p id="telegram-api" class="api-notice">
+              <span class="api-notice__mark" aria-hidden="true">i</span>
+              <span>Vector использует Telegram API и&nbsp;является сторонним клиентом в&nbsp;экосистеме Telegram. Vector не&nbsp;является официальным приложением Telegram.</span>
+            </p>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="logo-stage">
+              <img src="assets/vector-saturn.webp" width="720" height="480" alt="" draggable="false" decoding="async" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div class="about-intro">
+          <div class="about-meta">
+            <p class="section-kicker">О приложении</p>
+            <span class="development-status"><span aria-hidden="true"></span>Открытый бета-тест</span>
+          </div>
+          <h2 id="about-title">Знакомый Telegram. Больше контроля над приватностью.</h2>
+          <p class="about-lead">Vector — сторонний форк Telegram для Android, который сохраняет привычные чаты, группы, каналы, звонки и&nbsp;обмен файлами, но&nbsp;добавляет собственные настройки интерфейса и&nbsp;быстрые инструменты приватности.</p>
+          <div class="about-facts" aria-label="Краткая информация о Vector">
+            <span>Telegram API</span>
+            <span>Android</span>
+            <span>Обратимые режимы</span>
+          </div>
+        </div>
+
+        <div class="about-highlight">
+          <div class="about-highlight__main">
+            <p class="about-highlight__label"><span aria-hidden="true"></span>Главное</p>
+            <strong>Приватность — одной кнопкой.<span>Защищённые чаты — под вашим контролем.</span></strong>
+          </div>
+          <div class="about-highlight__aside">
+            <p>Vector запоминает прежние настройки перед включением специальных режимов и&nbsp;возвращает их после выключения.</p>
+            <div class="about-highlight__notes" aria-label="Основные принципы Vector">
+              <span>Настройки можно вернуть</span>
+              <span>Данные не&nbsp;продаются</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-details" aria-label="Особенности Vector">
+          <article class="feature-detail">
+            <div class="feature-detail__heading">
+              <span>1</span>
+              <div><h3>Режим невидимки</h3><p>Конфиденциальность без долгой настройки.</p></div>
+            </div>
+            <div class="feature-detail__text">
+              <p>Одно нажатие переводит доступные параметры в&nbsp;разделе конфиденциальности в&nbsp;состояние «Никто». Пользователю не&nbsp;нужно открывать каждый пункт Telegram и&nbsp;менять его отдельно.</p>
+              <p>Режим полностью обратим: после выключения Vector восстанавливает значения, которые использовались до&nbsp;его включения.</p>
+            </div>
+          </article>
+
+          <article class="feature-detail feature-detail--accent">
+            <div class="feature-detail__heading">
+              <span>2</span>
+              <div><h3>Безопасный режим</h3><p>Дополнительная защита исключений.</p></div>
+            </div>
+            <div class="feature-detail__text">
+              <p>На время работы режима Vector убирает пользователей из&nbsp;списков исключений конфиденциальности, чтобы скрытые данные не&nbsp;оставались доступны через эти списки.</p>
+              <p>Если пользователь снова появляется в&nbsp;исключениях из-за ошибки Telegram, режим удаляет такую запись повторно. После выключения безопасного режима ранее сохранённые исключения восстанавливаются.</p>
+            </div>
+          </article>
+
+          <article class="feature-detail">
+            <div class="feature-detail__heading">
+              <span>3</span>
+              <div><h3>Защищённые чаты</h3><p>Один пароль и&nbsp;необязательный отпечаток.</p></div>
+            </div>
+            <div class="feature-detail__text">
+              <p>Пользователь задаёт обязательный общий пароль для защищённых чатов. В&nbsp;настройках можно дополнительно разрешить разблокировку по&nbsp;отпечатку пальца.</p>
+              <p>Чат остаётся видимым в&nbsp;списке, но&nbsp;текст последнего сообщения и&nbsp;содержимое входящих уведомлений скрываются. Автоблокировка срабатывает через выбранный интервал — 30&nbsp;секунд, 1&nbsp;минуту или 5&nbsp;минут. После перезапуска Vector защищённые чаты блокируются сразу.</p>
+            </div>
+          </article>
+
+          <article class="feature-detail">
+            <div class="feature-detail__heading">
+              <span>4</span>
+              <div><h3>Однострочный режим</h3><p>Более спокойный список диалогов.</p></div>
+            </div>
+            <div class="feature-detail__text">
+              <p>Режим скрывает текст последнего сообщения во&nbsp;всех чатах. В&nbsp;списке остаются сами диалоги, но&nbsp;их содержимое не&nbsp;показывается до&nbsp;открытия чата.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="future" class="future-section" aria-labelledby="future-title">
+        <div class="future-intro">
+          <p class="section-kicker">Идеи для развития</p>
+          <h2 id="future-title">Новый интерфейс.<br />Привычная логика.</h2>
+          <p>В будущих версиях Vector планируется почти полностью переосмыслить внешний вид приложения: навигацию, список чатов, экран диалога, настройки и небольшие ежедневные действия.</p>
+        </div>
+        <div class="future-card">
+          <p class="future-card__label">Направление развития</p>
+          <strong>Сделать Telegram визуально спокойнее, современнее и удобнее — без необходимости заново учиться им пользоваться.</strong>
+          <p>Большинство привычных возможностей Telegram останутся на своих местах. Изменения будут сосредоточены на понятной структуре, более быстром доступе к важным действиям и собственной визуальной идентичности Vector.</p>
+          <div class="future-tags" aria-label="Основные идеи развития">
+            <span>Новая навигация</span>
+            <span>Обновлённые чаты</span>
+            <span>Знакомые функции</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="security-section" aria-labelledby="security-title">
+        <div class="security-copy">
+          <p class="section-kicker">Подход Vector</p>
+          <h2 id="security-title">Безопасность и&nbsp;приватность — наш приоритет</h2>
+          <p>Безопасность и&nbsp;приватность пользователей — наш приоритет. Мы внимательно относимся к&nbsp;защите данных. При развитии Vector особое внимание уделяется надёжности, прозрачности, приватности и&nbsp;безопасной работе приложения.</p>
+        </div>
+      </section>
+
+      <section id="vekki" class="vekki-section" aria-labelledby="vekki-title">
+        <div class="vekki-card">
+          <div class="vekki-copy">
+            <p class="section-kicker">Vector AI</p>
+            <h2 id="vekki-title">Векки — Telegram-бот от&nbsp;Vector</h2>
+            <p>Векки — бот проекта Vector и&nbsp;точка входа в&nbsp;Vector AI. Им&nbsp;можно пользоваться отдельно: скачивать Vector для этого не&nbsp;нужно.</p>
+          </div>
+          <div class="vekki-action">
+            <a id="vekki-bot-link" class="button button--primary vekki-link">
+              Открыть Векки
+              <svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true"><path d="M5 15 15 5m-7 0h7v7" /></svg>
+              <span class="vekki-link__status">Ссылка скоро</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="download" class="download-section glass" aria-labelledby="download-title">
+        <div class="download-intro">
+          <p class="section-kicker">Доступно для Android</p>
+          <h2 id="download-title">Скачать Vector</h2>
+          <p class="download-beta"><strong>Открытая бета-версия уже доступна.</strong> Нынешняя версия Vector не&nbsp;является окончательным продуктом, но&nbsp;приложение уже можно скачать и&nbsp;попробовать.</p>
+          <div class="download-counter" aria-live="polite" aria-atomic="true">
+            <span id="download-count-value">—</span>
+            <span id="download-count-label">загрузок APK</span>
+          </div>
+          <p id="download-count-note" class="download-count-note">Счётчик обновляется по данным GitHub Releases.</p>
+        </div>
+        <div class="download-list">
+          <a id="apk-download" class="store-button store-button--primary" aria-disabled="true">
+            <span class="store-button__icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" /></svg></span>
+            <span class="store-button__copy"><small id="apk-source-label">GitHub Releases</small><strong id="apk-button-label">Подготовка загрузки…</strong></span>
+            <svg class="store-button__arrow" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 10h12m-4-4 4 4-4 4" /></svg>
+          </a>
+          <a id="samsung-download" class="store-button store-button--secondary">
+            <span class="store-button__icon store-button__icon--logo"><img src="assets/galaxy-store-logo.webp" width="30" height="30" alt="" /></span>
+            <span class="store-button__copy"><small>Магазин приложений</small><strong>Galaxy Store</strong></span>
+            <span class="status-pill">Скоро</span>
+            <svg class="store-button__arrow" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 10h12m-4-4 4 4-4 4" /></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="footer-about">
+          <div class="footer-brand"><img src="assets/vector-logo.webp" width="42" height="42" alt="" /><strong>Vector</strong></div>
+          <p>Простой сторонний клиент Telegram для Android.</p>
+        </div>
+        <nav class="footer-column" aria-label="Разделы сайта">
+          <strong>Разделы</strong>
+          <a href="#about">О приложении</a>
+          <a href="#future">Идеи для развития</a>
+          <a href="#security">Безопасность и&nbsp;приватность</a>
+          <a href="#vekki">Vector AI — Векки</a>
+          <a href="#download">Скачать приложение</a>
+        </nav>
+        <div class="footer-column">
+          <strong>О приложении</strong>
+          <span>Платформа: Android</span>
+          <span>Работает через Telegram API</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Vector использует Telegram API и&nbsp;является сторонним клиентом в&nbsp;экосистеме Telegram. Vector не&nbsp;является официальным приложением Telegram.</p>
+        <div class="footer-end">
+          <p class="official-mark">Официальный сайт разработчика Vector</p>
+          <a class="discord-link" href="https://discord.gg/5ujc6SAKsj" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" aria-label="Открыть Discord-сервер Vector">
+            <img src="assets/discord-logo.png" width="30" height="22" alt="" loading="lazy" decoding="async" draggable="false" />
+          </a>
+          <p>© 2026 Vector</p>
+        </div>
+      </div>
+    </footer>
+    <noscript><p class="noscript">Для настройки кнопок скачивания требуется JavaScript.</p></noscript>
+    <script src="config.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
