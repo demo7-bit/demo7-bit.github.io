@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://demo7-bit.github.io/vector-images.html</loc>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-messenger-current-icon.png</image:loc><image:title>Актуальная иконка мессенджера Vector</image:title><image:caption>Официальная иконка Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-white-saturn-logo-transparent.png</image:loc><image:title>Белый логотип Vector без фона</image:title><image:caption>Белый знак планеты Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-wordmark-orange.png</image:loc><image:title>Название Vector на оранжевом фоне</image:title><image:caption>Фирменная надпись Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-messages-icon.png</image:loc><image:title>Иконка сообщений Vector</image:title><image:caption>Сообщения мессенджера Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-restrictions-icon.png</image:loc><image:title>Иконка запретов Vector</image:title><image:caption>Запреты и ограничения Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vekki-vector-mascot-avatar.png</image:loc><image:title>Векки — маскот Vector</image:title><image:caption>Аниме-маскот мессенджера Vector для аватарки</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-prime-2026-vekki.png</image:loc><image:title>Vector Prime 2026 с маскотом Векки</image:title><image:caption>Развитие Vector в 2026 году</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vekki-vector-mascot-biography.png</image:loc><image:title>Биография Векки — маскота Vector</image:title><image:caption>История Векки, маскота и хранительницы Vector</image:caption></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/vector-telegram-fork-default-app-icon.jpg</image:loc><image:title>Стандартная иконка приложения Vector — форка Telegram</image:title><image:caption>Иконка, используемая по умолчанию в приложении Vector для Android</image:caption></image:image>
+  </url>
+</urlset>

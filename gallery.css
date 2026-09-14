@@ -1,0 +1,38 @@
+:root {
+  --bg: #070707;
+  --surface: #111;
+  --text: #fff;
+  --muted: #b8b8b8;
+  --brand: #f47716;
+  --border: rgba(255,255,255,.11);
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; scroll-behavior: smooth; }
+body { margin: 0; background: radial-gradient(circle at 85% 0, rgba(244,119,22,.12), transparent 28rem), var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, sans-serif; line-height: 1.55; }
+a { color: inherit; }
+.gallery-header, .gallery-main, .gallery-footer { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+.gallery-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; }
+.gallery-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; }
+.gallery-brand img { width: 38px; height: 38px; border-radius: 10px; }
+.back-link { color: var(--muted); text-underline-offset: 4px; }
+.gallery-hero { max-width: 850px; padding: 70px 0 48px; }
+.eyebrow { margin: 0 0 12px; color: var(--brand); font-size: .86rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -.055em; }
+.gallery-lead { max-width: 730px; margin: 24px 0 0; color: var(--muted); font-size: 1.1rem; }
+.image-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; padding-bottom: 80px; }
+.image-card { overflow: hidden; border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(145deg, rgba(25,25,25,.96), rgba(12,12,12,.96)); }
+.image-frame { display: grid; min-height: 290px; place-items: center; overflow: hidden; background: #171717; }
+.image-frame--light { background: #e7e7e7; }
+.image-frame img { width: 100%; height: 390px; object-fit: contain; }
+.image-copy { padding: 22px; }
+.image-copy h2 { margin: 0; font-size: 1.35rem; }
+.image-copy p { min-height: 3.1em; margin: 8px 0 18px; color: var(--muted); }
+.download-link { display: inline-flex; min-height: 44px; align-items: center; padding: 0 16px; border-radius: 12px; background: var(--brand); color: #160a03; font-weight: 800; text-decoration: none; }
+.gallery-footer { padding: 28px 0 44px; border-top: 1px solid var(--border); color: var(--muted); }
+@media (max-width: 720px) {
+  .gallery-header { align-items: flex-start; }
+  .gallery-hero { padding-top: 44px; }
+  .image-grid { grid-template-columns: 1fr; }
+  .image-frame img { height: 320px; }
+  .image-copy p { min-height: 0; }
+}
