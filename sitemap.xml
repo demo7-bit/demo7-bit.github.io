@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://demo7-bit.github.io/</loc></url>
-  <url><loc>https://demo7-bit.github.io/vector-images.html</loc></url>
+  <url>
+    <loc>https://demo7-bit.github.io/brand/</loc>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/brand/vector-discord-logo.png</image:loc></image:image>
+    <image:image><image:loc>https://demo7-bit.github.io/assets/brand/vector-telegram-client-logo.png</image:loc></image:image>
+  </url>
 </urlset>
